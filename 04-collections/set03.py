@@ -1,0 +1,7 @@
+firstTuple = (1, 5, 7, 9, 11)
+secondTuple = (2, 5, 6, 7, 8)
+mix = list(firstTuple[::2]+secondTuple[1::2])
+mixSet = set(mix)
+print(f'Tuple {firstTuple} and {secondTuple}.')
+print(f'List{mix}.')
+print(f'Set:{mixSet}.')
