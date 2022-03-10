@@ -8,6 +8,8 @@ for i in range(steps):
     user = int(input("Type your number:.."))
     if user == computer:
         print("You win!")
+        break
     else:
         print("Hot") if user < computer else print("Cold")
-print("You lose.")
+    if i == 5:
+        print("You lose.")
