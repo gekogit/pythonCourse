@@ -12,11 +12,11 @@ def rock_paper_scissors(user1_name, user1_type, user2_name, user2_type):
     if score == 0:
         return'Draw'
     if score == 1:
-        return user1_name if score == user1_type else user2name
+        return user1_name if score == user1_type else user2_name
     if score == 2:
-        return user1_name if score == user1_type else user2name
+        return user1_name if score == user1_type else user2_name
     if score == 3:
-        return user1_name if score == user1_type else user2name
+        return user1_name if score == user1_type else user2_name
 
 
 print('\nRock paper scissors game. 2 Users ')
