@@ -28,8 +28,8 @@ for n in range(repeat_number):
     if user_letter == computer_words:
         print('Well done')
         break
+    letter_in_word = False
     for letter_index in range(len(computer_words)):
-        letter_in_word = False
         if computer_words[letter_index] == user_letter:
             user_shadow_word = user_shadow_word[:letter_index] + user_letter + user_shadow_word[letter_index + 1:]
             letter_in_word = True
@@ -39,5 +39,5 @@ for n in range(repeat_number):
     if user_shadow_word == computer_words:
         print('Well done')
         break
-    if n == repeat_number:
+    if n+1 == repeat_number:
         print('Ups... Try again next time.')
