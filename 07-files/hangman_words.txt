@@ -1,0 +1,2 @@
+names:Sarah,Anna,Julia,Laura,Lena,Hannah,Lisa,Katharina,Leonie,Vanessa
+fruits:banana,cherry,blackberries,mango,orange,plum,strawberry,melon
