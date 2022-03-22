@@ -28,7 +28,8 @@ def main():
                 total_field += room_field
             case _:
                 print("Wrong input")
-    print(f'Total field = {round(total_field),2}')
+    print(f'Total field = {round(total_field,2)}')
+
 
 if __name__ == '__main__':
     main()

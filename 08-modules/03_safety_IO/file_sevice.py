@@ -7,17 +7,18 @@ import os
 
 
 def read_file(filename):
-    if os.path.getsize(filename)>0:
-        with open(filename) as f:
-            return f.read()
+    if os.path.exists(filename):
+        if os.path.getsize(filename) > 0:
+            with open(filename) as f:
+                content = f.read()
+                return content
     else:
+        print(f'Can not read from {filename}.')
+
+
+def write_file(filename, data):
+    if os.path.exists(filename):
         print("File already exist/not empty!")
-
-
-def write_file(filename,data):
-    if os.path.getsize(filename)>0:
-        with open(filename) as f:
+    else:
+        with open(filename, 'w') as f:
             f.write(data)
-    else:
-        print("File already exist/not empty!")
-
