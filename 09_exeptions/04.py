@@ -19,6 +19,8 @@ def take_numbers():
             break
         except ValueError:
             print("Try again more carefully.")
+            with open('ex4_error_log.txt', 'w+') as f:
+                f.write('ValueError\n')
 
 
 def calculate_mean(data_list):
@@ -28,7 +30,6 @@ def calculate_mean(data_list):
 def main():
     print("\nWrite numbers to calculate means.")
     print('Mean = ', round(calculate_mean(take_numbers())))
-
 
 
 if __name__ == "__main__":
