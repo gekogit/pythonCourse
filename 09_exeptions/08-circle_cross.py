@@ -104,7 +104,7 @@ game_board = [
 
 
 def main():
-    print('\n Circle cross game. Two players. Selection by index (11,12..) ')
+    print('\n Circle cross game. Two players. Selection by index (1A,1B..) ')
     print_board(game_board_intro)
     user1_name, user2_name = take_names()
     print_board(game_board)
@@ -119,6 +119,10 @@ def main():
                 print(f'{user1_name} WIN')
                 log_game(f'{user1_name} WON against {user2_name}\n')
                 break
+            elif draw():
+                print('DRAW')
+                log_game(" DRAW\n")
+                break
         else:
             print('Place already used, you miss your chance!')
         user2 = take_user_choice(user2_name, "X")
@@ -126,17 +130,17 @@ def main():
         if check_free_position(user2):
             put_to_bord(user2, 'X')
             print_board(game_board)
+
             if sign_win('X'):
                 print(f'{user2_name} WIN')
                 log_game(f'{user2_name} WON against {user1_name}\n')
                 break
+            elif draw():
+                print('DRAW')
+                log_game(" DRAW\n")
+                break
         else:
             print('Place already used, you miss your chance!')
-
-        if draw():
-            print('DRAW')
-            log_game(" DRAW\n")
-            break
 
 
 if __name__ == "__main__":
