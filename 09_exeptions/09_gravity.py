@@ -17,11 +17,11 @@ from urllib.error import URLError
 
 
 def is_start_ok(url):
-    return url.startswith('https://' or url.startswith('http://'))
+    return url.startswith('https://') or url.startswith('http://')
 
 
 def is_end_ok(url):
-    return url.endswith('.pl' or url.endswith('.com'))
+    return url.endswith('.pl') or url.endswith('.com')
 
 
 def is_start_www(url):
@@ -32,7 +32,7 @@ def get_url():
     url = input('Give URL:..')
     if is_start_ok(url) and is_end_ok(url):
         return url
-    elif is_start_www(url):
+    elif is_start_www(url) and is_end_ok(url):
         return 'http://' + url
     else:
         raise URLError('URL looks wrong.')
