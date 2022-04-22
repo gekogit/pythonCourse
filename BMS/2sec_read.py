@@ -4,14 +4,19 @@ import datetime
 
 
 def serial_init(com_port):
-    ser = serial.Serial(
-        port=com_port,
-        baudrate=9600,
-        parity=serial.PARITY_NONE,
-        stopbits=serial.STOPBITS_ONE,
-        bytesize=serial.EIGHTBITS,
-        timeout=1
-    )
+    try:
+        ser = serial.Serial(
+            port=com_port,
+            baudrate=9600,
+            parity=serial.PARITY_NONE,
+            stopbits=serial.STOPBITS_ONE,
+            bytesize=serial.EIGHTBITS,
+            timeout=1
+        )
+    except Exception:
+        print("Check port settings.")
+        serial_init(input("Type com port ('COM13'):"))
+
     return ser
 
 
@@ -87,25 +92,15 @@ def measure(ser_port):
 
 def main():
     print('BMS log.')
-    com_port = 'COM13'
-    try:
-        ser_port = serial_init(com_port)
-        check_serial_open(ser_port)
-        file_init(ser_port)
-        now = datetime.datetime.now()
-        while True:
-            now_temp = datetime.datetime.now()
-            if abs(now.second - now_temp.second) >= 2:
-                now = datetime.datetime.now()
-                measure(ser_port)
-    except Exception:
-        print("Program stopped. Check port settings.")
-
-
-
-
-
-
+    ser_port = serial_init('COM13')
+    check_serial_open(ser_port)
+    file_init(ser_port)
+    now = datetime.datetime.now()
+    while True:
+        now_temp = datetime.datetime.now()
+        if abs(now.second - now_temp.second) >= 2:
+            now = datetime.datetime.now()
+            measure(ser_port)
 
 
 if __name__ == '__main__':
