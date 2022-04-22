@@ -3,9 +3,9 @@ import time
 import datetime
 
 
-def serial_init():
+def serial_init(com_port):
     ser = serial.Serial(
-        port='COM13',
+        port=com_port,
         baudrate=9600,
         parity=serial.PARITY_NONE,
         stopbits=serial.STOPBITS_ONE,
@@ -27,7 +27,20 @@ def to_dec(data):
     now = datetime.datetime.now()
     data_sp = data.decode("utf-8")
     data_sp = data_sp.split(',')
-    for el in range(1, len(data_sp)-2):
+    v = str(int(data_sp[1], 16)) + ','
+    print("V = ", v)
+    safe_line(v)
+    if int(data_sp[2], 16) > 1294967295:
+        a_ = '-' + str((4294967295 - int(data_sp[2], 16))) + ','
+        print('A = ', a_)
+        safe_line(a_)
+
+    else:
+        a = str(int(data_sp[2], 16)) + ','
+        print('A = ', a)
+        safe_line(a)
+
+    for el in range(3, len(data_sp)-2):
         safe_line(str(int(data_sp[el], 16)) + ',')
     safe_line(str(data_sp[len(data_sp)-2]) + ',' + str(data_sp[len(data_sp)-1]) + ',')
     safe_line(str(now.time()) + ',' + str(now.date()))
@@ -74,9 +87,9 @@ def measure(ser_port):
 
 def main():
     print('BMS log.')
-
+    com_port = 'COM13'
     try:
-        ser_port = serial_init()
+        ser_port = serial_init(com_port)
         check_serial_open(ser_port)
         file_init(ser_port)
         now = datetime.datetime.now()
@@ -87,6 +100,12 @@ def main():
                 measure(ser_port)
     except Exception:
         print("Program stopped. Check port settings.")
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
