@@ -69,7 +69,7 @@ def file_init(com_port):
                                ' Section4[mV], Balancer, Alarm, Time, Date\n')
             version_read = False
         else:
-            print("Didn't receive good frame. ")
+            print("Didn't receive a good frame. ")
 
 
 def safe_line(data):
