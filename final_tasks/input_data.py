@@ -34,20 +34,21 @@ def manual_generator():
     return num
 
 
-def auto_random():
-    samples = 5
-    num = random.sample(range(10, 50), samples)
+def auto_random(len_list):
+    num = []
+    for x in range(len_list):
+        num.append(random.randrange(1000))
     return num
 
 
-def auto_up():
-    num = auto_random()
+def auto_up(len_list):
+    num = auto_random(len_list)
     num.sort()
     return num
 
 
-def auto_down():
-    num = auto_up()
+def auto_down(len_list):
+    num = auto_up(len_list)
     num.reverse()
     return num
 
@@ -55,11 +56,11 @@ def auto_down():
 def main():
     data_manual = manual_generator()
     print("User list: ", data_manual)
-    data_auto_random = auto_random()
+    data_auto_random = auto_random(20)
     print("Auto random list: ", data_auto_random)
-    data_auto_up = auto_up()
+    data_auto_up = auto_up(20)
     print("Auto up list: ", data_auto_up)
-    data_auto_down = auto_down()
+    data_auto_down = auto_down(20)
     print("Auto down list: ", data_auto_down)
 
 
