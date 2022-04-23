@@ -2,24 +2,25 @@ import input_data
 
 
 def counting_sort(data_list):
-    histogram_base = list(range(min(data_list), max(data_list)))
+    min_in_data_list = min(data_list)
+    histogram_base = list(range(min_in_data_list, max(data_list)+1))
     len_histogram = len(histogram_base)
     histogram = [0] * len_histogram
-    index = 0
-    for base_num in histogram_base:
-        for el in data_list:
-            if base_num == el:
-                histogram[index] += 1
-        index += 1
+
+    for el in data_list:
+        histogram[el-min_in_data_list] +=1
+
     data_sorted = []
     for x in range(0, len_histogram):
         if histogram[len_histogram - x-1] > 0:
-            data_sorted.append(histogram_base[len_histogram - x-1])
+            for repeat in range(0, histogram[len_histogram - x-1]):
+                data_sorted.append(histogram_base[len_histogram - x-1])
     return data_sorted
 
 
 def main():
     print(counting_sort(input_data.auto_random()))
+    print(counting_sort([2, 3, 8, -5, 4, -2, 6, 7, 9, 3, 4, 6]))
 
 
 if __name__ == '__main__':
