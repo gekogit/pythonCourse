@@ -55,7 +55,7 @@ def to_dec(data):
 def file_init(com_port):
     version_read = True
     while version_read:
-        com_port.write(b'\x1A\x4F')
+        com_port.write(b'\x1A\x1B')
         time.sleep(1)
         bytes_to_read = com_port.inWaiting()
         if bytes_to_read == 73:
@@ -78,7 +78,7 @@ def safe_line(data):
 
 
 def measure(ser_port):
-    ser_port.write(b'\x1A\x4F')
+    ser_port.write(b'\x1A\x1B')
     time.sleep(1)
     bytes_to_read = ser_port.inWaiting()
 
