@@ -15,7 +15,7 @@ def serial_init(com_port):
         )
     except Exception:
         print("Check port settings.")
-        serial_init(input("Type com port ('COM13'):"))
+        ser = serial_init(input("Type com port ('COM13'):"))
 
     return ser
 
